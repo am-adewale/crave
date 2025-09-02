@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout  Crave</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">Crave</span>
+                </a>
+            </div>
+            
+            <div class="checkout-progress">
+                <div class="progress-step active">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step active">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Payment</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <i class="fas fa-check"></i>
+                    <span>Complete</span>
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="profile-container">
+                    <img src="" alt="Profile" class="profile-img" id="profileImg">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Content -->
+    <div class="checkout-container">
+        <div class="checkout-content">
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="order-items" id="orderItems">
+                    <!-- Order items will be loaded here -->
+                </div>
+                
+                <div class="order-totals">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">₦0</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Delivery Fee:</span>
+                        <span id="deliveryFee">₦500</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Service Fee:</span>
+                        <span id="serviceFee">₦100</span>
+                    </div>
+                    <div class="total-row discount-row" id="discountRow" style="display: none;">
+                        <span>Discount:</span>
+                        <span id="discount">-₦0</span>
+                    </div>
+                    <div class="total-row final-total">
+                        <span>Total:</span>
+                        <span id="finalTotal">₦0</span>
+                    </div>
+                </div>
+
+                <div class="promo-code">
+                    <div class="promo-input">
+                        <input type="text" placeholder="Enter promo code" id="promoCode">
+                        <button class="apply-promo" id="applyPromo">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery & Payment -->
+            <div class="delivery-payment">
+                <!-- Delivery Information -->
+                <div class="section">
+                    <h3>Delivery Information</h3>
+                    <form class="delivery-form" id="deliveryForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Delivery Address</label>
+                            <textarea id="address" placeholder="Enter your full delivery address" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deliveryNotes">Delivery Notes (Optional)</label>
+                            <textarea id="deliveryNotes" placeholder="Any special instructions for delivery"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Delivery Time -->
+                <div class="section">
+                    <h3>Delivery Time</h3>
+                    <div class="delivery-options">
+                        <label class="delivery-option">
+                            <input type="radio" name="deliveryTime" value="asap" checked>
+                            <div class="option-content">
+                                <h4>ASAP</h4>
+                                <p>Deliver as soon as possible (30-45 mins)</p>
+                            </div>
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="deliveryTime" value="scheduled">
+                            <div class="option-content">
+                                <h4>Schedule for later</h4>
+                                <p>Choose a specific time</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="scheduled-time" id="scheduledTime" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="deliveryDate">Date</label>
+                                <input type="date" id="deliveryDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryTimeSlot">Time</label>
+                                <select id="deliveryTimeSlot">
+                                    <option value="">Select time</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="section">
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="card" checked>
+                            <div class="option-content">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit/Debit Card</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="bank">
+                            <div class="option-content">
+                                <i class="fas fa-university"></i>
+                                <span>Bank Transfer</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="ussd">
+                            <div class="option-content">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>USSD</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Order Notes -->
+                <div class="section">
+                    <h3>Order Notes</h3>
+                    <div class="form-group">
+                        <textarea id="orderNotes" placeholder="Any special requests or notes for your order"></textarea>
+                    </div>
+                </div>
+
+                <!-- Place Order Button -->
+                <div class="place-order-section">
+                    <button class="btn-primary place-order-btn" id="placeOrderBtn">
+                        <i class="fas fa-lock"></i>
+                        Place Order - ₦<span id="orderTotal">0</span>
+                    </button>
+                    <p class="secure-payment">
+                        <i class="fas fa-shield-alt"></i>
+                        Your payment information is secure and encrypted
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-modal">
+            <div class="success-animation">
+                <div class="checkmark">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Your order has been confirmed and is being prepared.</p>
+            <div class="order-details">
+                <p><strong>Order ID:</strong> <span id="orderIdDisplay">#12345</span></p>
+                <p><strong>Estimated Delivery:</strong> <span id="estimatedDelivery">30-45 minutes</span></p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="continueShopping">Continue Shopping</button>
+                <button class="btn-primary" id="trackOrder">Track Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

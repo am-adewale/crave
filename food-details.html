@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Details Crave</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/food-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">Crave</span>
+                </a>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search for restaurants, cuisines, or dishes" id="searchInput">
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="cart-container" id="cartContainer">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+                <div class="profile-container">
+                    <img src="" alt="Profile" class="profile-img" id="profileImg">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#" id="profileLink">Profile</a>
+                        <a href="#" id="ordersLink">Orders</a>
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="#" id="categoryBreadcrumb">Category</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="foodBreadcrumb">Food Name</span>
+        </div>
+    </nav>
+
+    <!-- Food Details -->
+    <section class="food-details">
+        <div class="container">
+            <div class="food-details-content">
+                <div class="food-image-section">
+                    <div class="main-image">
+                        <img src="" alt="Food Image" id="mainFoodImage">
+                        <div class="image-badges">
+                            <span class="badge diet-badge" id="dietBadge"></span>
+                            <span class="badge health-badge" id="healthBadge"></span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-images" id="thumbnailImages">
+                        <!-- Thumbnail images will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="food-info-section">
+                    <div class="food-header">
+                        <h1 class="food-title" id="foodTitle">Loading...</h1>
+                        <div class="food-rating">
+                            <div class="stars" id="foodRating">
+                                <!-- Stars will be loaded here -->
+                            </div>
+                            <span class="rating-count" id="ratingCount">(0 reviews)</span>
+                        </div>
+                    </div>
+
+                    <div class="food-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-fire"></i>
+                            <span id="foodCalories">0 cal</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>15-25 min</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Free delivery</span>
+                        </div>
+                    </div>
+
+                    <div class="food-price">
+                        <span class="current-price" id="foodPrice">₦0</span>
+                        <span class="original-price" id="originalPrice">₦0</span>
+                        <span class="discount" id="discount">0% off</span>
+                    </div>
+
+                    <div class="food-description">
+                        <h3>Description</h3>
+                        <p id="foodDescription">Loading description...</p>
+                    </div>
+
+                    <div class="food-options">
+                        <div class="quantity-selector">
+                            <label>Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" id="decreaseQty">-</button>
+                                <span class="quantity" id="quantity">1</span>
+                                <button class="quantity-btn" id="increaseQty">+</button>
+                            </div>
+                        </div>
+
+                        <div class="size-options" id="sizeOptions">
+                            <label>Size:</label>
+                            <div class="size-buttons">
+                                <!-- Size options will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn-primary add-to-cart-btn" id="addToCartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            Add to Cart - ₦<span id="totalPrice">0</span>
+                        </button>
+                        <button class="btn-secondary favorite-btn" id="favoriteBtn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="food-tags">
+                        <h3>Tags</h3>
+                        <div class="tags-container" id="foodTags">
+                            <!-- Tags will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <div class="reviews-stats">
+                    <div class="average-rating">
+                        <span class="rating-number" id="averageRating">0.0</span>
+                        <div class="stars" id="averageStars">
+                            <!-- Stars will be loaded here -->
+                        </div>
+                        <span class="total-reviews" id="totalReviews">0 reviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Form -->
+            <div class="review-form-container" id="reviewFormContainer">
+                <h3>Write a Review</h3>
+                <form class="review-form" id="reviewForm">
+                    <div class="rating-input">
+                        <label>Your Rating:</label>
+                        <div class="star-rating" id="starRating">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reviewComment">Your Review:</label>
+                        <textarea id="reviewComment" placeholder="Share your experience with this food..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+
+            <!-- Reviews List -->
+            <div class="reviews-list" id="reviewsList">
+                <!-- Reviews will be loaded here -->
+            </div>
+
+            <button class="btn-secondary load-more-reviews" id="loadMoreReviews" style="display: none;">
+                Load More Reviews
+            </button>
+        </div>
+    </section>
+
+    <!-- Related Foods -->
+    <section class="related-foods">
+        <div class="container">
+            <h2 class="section-title">You Might Also Like</h2>
+            <div class="foods-grid" id="relatedFoodsGrid">
+                <!-- Related foods will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: ₦<span id="cartTotal">0</span></span>
+            </div>
+            <button class="btn-primary checkout-btn" id="checkoutBtn">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Added to Cart!</h3>
+                <button class="close-modal" id="closeSuccessModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Item has been added to your cart successfully!</p>
+                <div class="modal-actions">
+                    <button class="btn-secondary" id="continueShopping">Continue Shopping</button>
+                    <button class="btn-primary" id="viewCart">View Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/food-details.js"></script>
+</body>
+</html>
